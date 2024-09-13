@@ -51,6 +51,10 @@ app.use((req, res, next) => {
 })
 app.use(bodyParser.json())
 
+app.get('/test', async (req, res) => {
+  res.status(200).send('hello')
+})
+
 app.post('/repos/:owner/:repo/issues/:issueNumber/comments', async (req, res, next) => {
   try {
     const isTokenValid = await checkToken(req.httpClient, req.header('temporary-github-token'))
